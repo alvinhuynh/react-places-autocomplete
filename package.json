@@ -1,5 +1,6 @@
 {
   "name": "react-places-autocomplete",
+  "sideEffects": false,
   "version": "7.2.1",
   "description": "A React component for Google Maps Places Autocomplete",
   "main": "dist/index.js",
@@ -12,8 +13,6 @@
     "prebuild": "rimraf dist",
     "build": "npm-run-all --parallel build:*",
     "build:main": "babel --copy-files --out-dir dist --ignore *.spec.js src",
-    "build:umd": "webpack --output-filename index.umd.js",
-    "build:umd.min": "webpack --output-filename index.umd.min.js -p",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "demo": "webpack-dev-server --config demo/webpack.config.js --debug --content-base demo --inline --hot --colors",
     "demo:test": "mocha demo/tests/index.spec.js --compilers js:babel-register",
@@ -21,7 +20,7 @@
     "demo:deploy": "gh-pages -d demo/dist",
     "prepublish": "npm run build",
     "postpublish": "npm run demo:deploy",
-    "prettier": "prettier --write \"src/**/*.js\" \"demo/**/*.js\"",
+    "prettier": "prettier --write \"**/*.js\" \"demo/**/*.js\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format-code": "npm run prettier & npm run lint:fix",
@@ -59,7 +58,14 @@
   },
   "homepage": "https://github.com/kenny-hibino/react-places-autocomplete#readme",
   "devDependencies": {
-    "babel-cli": "^6.23.0",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "~7.7.4",
+    "@babel/plugin-proposal-numeric-separator": "~7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "~7.7.4",
+    "@babel/plugin-transform-modules-commonjs": "~7.7.4",
+    "@babel/preset-env": "~7.7.4",
+    "@babel/preset-react": "~7.7.4",
     "babel-eslint": "8.2.2",
     "babel-jest": "22.4.3",
     "babel-loader": "^6.3.2",
@@ -101,15 +107,8 @@
       "path": "node_modules/cz-conventional-changelog"
     },
     "ghooks": {
-      "pre-commit": "npm run test"
+      "pre-commit": ""
     }
-  },
-  "babel": {
-    "presets": [
-      "es2015",
-      "react",
-      "stage-2"
-    ]
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
