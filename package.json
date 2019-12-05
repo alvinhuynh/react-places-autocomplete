@@ -25,7 +25,6 @@
     "format-code": "npm run prettier & npm run lint:fix",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "repository": {
     "type": "git",
     "url": "https://github.com/alvinhuynh/react-places-autocomplete.git"
